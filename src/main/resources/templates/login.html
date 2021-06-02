@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <th:block th:include="fragments/general.html :: headerfiles"></th:block>
+</head>
+<body>
+<div class="container">
+    <div th:replace="fragments/navbar"></div>
+    <h2>Welcome!</h2>
+    <form th:action="@{/login}" method="post"><br/>
+        <input type="text" id="username" name="username" th:placeholder="Username" class="form-control"/> <br/>
+        <input type="password" th:placeholder="Password" id="password" name="password" class="form-control"/> <br/>
+        <div align="center" th:if="${param.error}">
+            <h4 style="color: red">Login unsuccessful.</h4>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-md btn-success btn-block" name="Submit" value="Login" type="Submit">Log in</button>
+        </div>
+    </form>
+    <a th:href="@{/signup}"><button class="btn btn-md btn-info btn-block" name="Signup">Sign Up</button></a>
+</div>
+</body>
+</html>
